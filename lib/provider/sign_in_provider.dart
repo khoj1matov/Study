@@ -6,8 +6,10 @@ import 'package:study/screens/pages/sign_in_page.dart';
 import 'package:study/service/firebase_servoce.dart';
 
 class SigninProvider extends ChangeNotifier {
+  TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
   GlobalKey<FormState> fromKey = GlobalKey<FormState>();
 
   Future signUp(BuildContext context) async {
@@ -23,22 +25,12 @@ class SigninProvider extends ChangeNotifier {
       showMySnackbar(
           "Success:" + user.user!.email.toString(), Colors.green, context);
       await FireService.auth.currentUser!.sendEmailVerification();
-      if (emailController.text == 'admin@gmail.com' &&
-          passwordController.text == '332211') {
-        Navigator.pushNamedAndRemoveUntil(
-          context,
-          '/admin',
-          (route) => false,
-        );
-        debugPrint("kirdi3");
-      } else {
-        Navigator.pushNamedAndRemoveUntil(
-          context,
-          '/details',
-          (route) => false,
-        );
-        debugPrint("kirdi4");
-      }
+
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        '/continue',
+        (route) => false,
+      );
     } on FirebaseAuthException catch (e) {
       if (e.code == "weak-password") {
         showMySnackbar("The password provided is too weak.",
@@ -59,20 +51,12 @@ class SigninProvider extends ChangeNotifier {
         email: emailController.text,
         password: passwordController.text,
       );
-      if (emailController.text == 'admin@gmail.com' &&
-          passwordController.text == '332211') {
-        Navigator.pushNamedAndRemoveUntil(
-          context,
-          '/admin',
-          (route) => false,
-        );
-      } else {
-        Navigator.pushNamedAndRemoveUntil(
-          context,
-          '/details',
-          (route) => false,
-        );
-      }
+
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        '/details',
+        (route) => false,
+      );
     } on FirebaseAuthException catch (e) {
       if (e.code == "user-not-found") {
         showMySnackbar(
@@ -105,7 +89,7 @@ class SigninProvider extends ChangeNotifier {
       await FirebaseAuth.instance.signInWithCredential(credential);
       Navigator.pushNamedAndRemoveUntil(
         context,
-        '/details',
+        '/continue',
         (route) => false,
       );
     } catch (e) {
@@ -115,8 +99,10 @@ class SigninProvider extends ChangeNotifier {
 
   Future signOut(BuildContext context) async {
     await FireService.auth.signOut();
-    Navigator.pushAndRemoveUntil(context,
-        MaterialPageRoute(builder: (_) => const SignInPage()), (route) => false);
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (_) => const SignInPage()),
+        (route) => false);
   }
 
   Future deleteAccount(context) async {

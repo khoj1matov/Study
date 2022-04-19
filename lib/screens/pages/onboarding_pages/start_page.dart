@@ -73,7 +73,10 @@ class StartPage extends StatelessWidget {
                             ),
                           ),
                           child: const Text("Let's start"),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamedAndRemoveUntil(
+                                context, '/details', (route) => false);
+                          },
                         ),
                       ],
                     ),

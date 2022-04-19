@@ -2,6 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:study/core/components/themedata_comp.dart';
+import 'package:study/provider/checkbox_provider.dart';
+import 'package:study/provider/pageview_provider.dart';
 import 'package:study/provider/route_provider.dart';
 import 'package:study/provider/sign_in_provider.dart';
 import 'package:study/routes/router.dart';
@@ -14,6 +16,8 @@ void main() async {
       providers: [
         ChangeNotifierProvider(create: (_) => RouteProvider()),
         ChangeNotifierProvider(create: (_) => SigninProvider()),
+        ChangeNotifierProvider(create: (_) => PageViewProvider()),
+        ChangeNotifierProvider(create: (_) => CheckBoxProvider()),
       ],
       child: MyApp(),
     ),
@@ -32,7 +36,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeComp.myTheme,
       onGenerateRoute: _myRouter.OnGenerateRoute,
-      initialRoute: '/second',
+      initialRoute: '/signUp',
     );
   }
 }

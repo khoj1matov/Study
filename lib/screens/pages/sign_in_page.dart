@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:study/core/components/my_text_style_comp.dart';
 import 'package:study/core/constants/color_const.dart';
 import 'package:study/core/constants/font_const.dart';
 import 'package:study/core/widgets/appbar_wirget.dart';
@@ -33,120 +34,94 @@ class _SignInPageState extends State<SignInPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(
-        title: 'Cat Coffee Login',
+        title: 'Sign In',
         context: context,
         centerTitle: true,
       ),
-      body: Padding(
-        padding: EdgeInsets.all(FontConst.kExtraLargFont),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.25,
-            ),
-            Form(
-              key: context.watch<SigninProvider>().fromKey,
-              child: Column(
-                children: [
-                  TextFormField(
-                    controller: context.watch<SigninProvider>().emailController,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius:
-                            BorderRadius.circular(FontConst.kMediumFont),
-                      ),
-                      labelText: 'Email',
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  TextFormField(
-                    controller:
-                        context.watch<SigninProvider>().passwordController,
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius:
-                            BorderRadius.circular(FontConst.kMediumFont),
-                      ),
-                      labelText: 'Password',
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                fixedSize: const Size(170, 50),
-                primary: ColorConst.scaffoldBackground,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(FontConst.kLargeFont),
-                ),
-              ),
-              child: const Text("Log in"),
-              onPressed: () {
-                context.read<SigninProvider>().signIn(context);
-              },
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                TextButton(
-                  style: TextButton.styleFrom(
-                      primary: ColorConst.scaffoldBackground),
-                  onPressed: () {
-                    context.read<SigninProvider>().forgotPassword(context);
-                  },
-                  child: Text(
-                    "Forgot password?",
-                  ),
-                ),
-                TextButton(
-                  style: TextButton.styleFrom(
-                      primary: ColorConst.scaffoldBackground),
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/create');
-                  },
-                  child: Text(
-                    "Create account?",
-                  ),
-                ),
-              ],
-            ),
-            Row(
+      body: SingleChildScrollView(
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height * 0.6,
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        fixedSize: const Size(150, 30),
-                        primary: ColorConst.scaffoldBackground,
-                        shape: RoundedRectangleBorder(
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 7),
+                      child: Text("Email",
+                          style: MyTextStyleComp.emailAndPassword),
+                    ),
+                    TextFormField(
+                      controller:
+                          context.watch<SigninProvider>().emailController,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
                           borderRadius:
-                              BorderRadius.circular(FontConst.kLargeFont),
+                              BorderRadius.circular(FontConst.kExtraSmallFont),
                         ),
                       ),
-                      child: const Text("Google"),
-                      onPressed: () {
-                        context.read<SigninProvider>().signInWithGoogle(context);
-                      },
+                    ),
+                    const SizedBox(height: 25),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 7),
+                      child: Text("Password",
+                          style: MyTextStyleComp.emailAndPassword),
+                    ),
+                    TextFormField(
+                      controller:
+                          context.watch<SigninProvider>().passwordController,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius:
+                              BorderRadius.circular(FontConst.kExtraSmallFont),
+                        ),
+                      ),
                     ),
                   ],
                 ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    fixedSize: const Size(150, 30),
-                    primary: ColorConst.scaffoldBackground,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(FontConst.kLargeFont),
+                TextButton(
+                  onPressed: () {
+                    context.read<SigninProvider>().forgotPassword(context);
+                  },
+                  child: Text("Forgot password?",
+                      style: MyTextStyleComp.forgetPassword),
+                ),
+                Center(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      fixedSize: const Size(330, 60),
+                      primary: ColorConst.startPageColor2,
+                      shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.circular(FontConst.kExtraSmallFont)),
                     ),
+                    child: const Text("Log in"),
+                    onPressed: () {
+                      context.read<SigninProvider>().signIn(context);
+                    },
                   ),
-                  child: const Text("Facebook"),
-                  onPressed: () {},
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text("Don’t have an account?"),
+                    TextButton(
+                      style: TextButton.styleFrom(
+                          primary: ColorConst.startPageColor2),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/signUp');
+                      },
+                      child: const Text("Sign Up"),
+                    ),
+                  ],
                 ),
               ],
             ),
-          ],
+          ),
         ),
       ),
     );
