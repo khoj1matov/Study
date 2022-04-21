@@ -12,5 +12,7 @@ class ColorConst {
   static Color startPageColor2 = const Color(0XFF4178D4);
   static Color startPageElevated = const Color(0XFF52B6DF);
   static Color loremIpsum = const Color(0XFF64748B);
-  static Color startPageColor3 = Color.fromARGB(255, 132, 211, 243);
+  static Color startPageColor3 = const Color.fromARGB(255, 132, 211, 243);
+  static Color unselectedColor = const Color(0XFFCBD5E1);
+  static Color selectColor = const Color(0XFF316D86);
 }

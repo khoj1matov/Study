@@ -48,4 +48,11 @@ class MyTextStyleComp {
         fontSize: 20,
       );
 
+  static TextStyle get skipContinue => TextStyle(
+        color: ColorConst.kPrimaryBlack,
+        fontSize: 20,
+        fontWeight: FontWeight.w500,
+      );
+
+  
 }

@@ -26,10 +26,9 @@ class SigninProvider extends ChangeNotifier {
           "Success:" + user.user!.email.toString(), Colors.green, context);
       await FireService.auth.currentUser!.sendEmailVerification();
 
-      Navigator.pushNamedAndRemoveUntil(
+      Navigator.pushNamed(
         context,
         '/continue',
-        (route) => false,
       );
     } on FirebaseAuthException catch (e) {
       if (e.code == "weak-password") {
@@ -52,10 +51,9 @@ class SigninProvider extends ChangeNotifier {
         password: passwordController.text,
       );
 
-      Navigator.pushNamedAndRemoveUntil(
+      Navigator.pushNamed(
         context,
-        '/details',
-        (route) => false,
+        '/continue',
       );
     } on FirebaseAuthException catch (e) {
       if (e.code == "user-not-found") {

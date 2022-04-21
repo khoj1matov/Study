@@ -5,6 +5,7 @@ import 'package:study/screens/pages/onboarding_pages/details_page.dart';
 import 'package:study/screens/pages/sign_in_page.dart';
 import 'package:study/screens/pages/sign_up_page.dart';
 import 'package:study/screens/pages/onboarding_pages/start_page.dart';
+import 'package:study/screens/pages/tab_bars_pages.dart';
 
 class MyRouter {
   Route? OnGenerateRoute(RouteSettings s) {
@@ -21,6 +22,8 @@ class MyRouter {
         return MaterialPageRoute(builder: (_) => DetailsPage());
       case '/continue':
         return MaterialPageRoute(builder: (_) => ContinuePage());
+      case '/tab':
+        return MaterialPageRoute(builder: (_) => TabBarsPages());
     }
   }
 }
