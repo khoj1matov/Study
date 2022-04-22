@@ -28,8 +28,8 @@ class MyTextStyleComp {
 
   static TextStyle get loremIpsum => TextStyle(
         color: ColorConst.loremIpsum,
-        fontSize: 14,
-        fontWeight: FontWeight.w400,
+        fontSize: 15,
+        fontWeight: FontWeight.w600,
       );
 
   static TextStyle get skip => TextStyle(
@@ -51,8 +51,20 @@ class MyTextStyleComp {
   static TextStyle get skipContinue => TextStyle(
         color: ColorConst.kPrimaryBlack,
         fontSize: 20,
+        fontWeight: FontWeight.w700,
+      );
+
+  static TextStyle get gridViewTextStyle => TextStyle(
+        color: ColorConst.loremIpsum,
+        fontSize: 16,
         fontWeight: FontWeight.w500,
       );
 
-  
+  static TextStyle gridWiev2(Color color) {
+    return TextStyle(
+      fontSize: 20,
+      color: color,
+      fontWeight: FontWeight.bold
+    );
+  }
 }

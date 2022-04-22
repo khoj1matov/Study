@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -13,14 +14,21 @@ class SigninProvider extends ChangeNotifier {
   GlobalKey<FormState> fromKey = GlobalKey<FormState>();
 
   Future signUp(BuildContext context) async {
-    debugPrint("kirdi1");
     try {
       UserCredential user =
           await FireService.auth.createUserWithEmailAndPassword(
         email: emailController.text,
         password: passwordController.text,
       );
-      debugPrint("kirdi2");
+
+      await FireService.store.collection('study').doc().set(
+        {
+          "name": nameController.text,
+          "email": emailController.text,
+          "phone": phoneController.text,
+          "create_at": FieldValue.serverTimestamp(),
+        },
+      );
 
       showMySnackbar(
           "Success:" + user.user!.email.toString(), Colors.green, context);
