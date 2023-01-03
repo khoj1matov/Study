@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeComp.myTheme,
       onGenerateRoute: _myRouter.OnGenerateRoute,
-      initialRoute: '/start',
+      initialRoute: '/profile2',
     );
   }
 }

@@ -20,4 +20,5 @@ class ColorConst {
   static Color completeness = const Color(0XFF4178D4);
   static Color asignments = const Color(0XFF52B6DF);
   static Color subject = const Color(0XFFF59E0B);
+  static Color profileCirleBackGround = const Color(0XFFDCF0F9);
 }

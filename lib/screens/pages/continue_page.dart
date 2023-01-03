@@ -59,13 +59,15 @@ class ContinuePage extends StatelessWidget {
               style: MyTextStyleComp.skipContinue,
             ),
             onPressed: () {
-              Navigator.pushNamed(context, '/signIn');
+              Navigator.pushNamedAndRemoveUntil(
+                  context, '/tab', (route) => false);
             },
           ),
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.only(left: 10, right: 10, bottom: 25, top: 10),
+        padding:
+            const EdgeInsets.only(left: 10, right: 10, bottom: 25, top: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -99,8 +101,9 @@ class ContinuePage extends StatelessWidget {
                         ),
                         trailing: Checkbox(
                           checkColor: Colors.white,
-                          value:
-                              context.watch<CheckBoxProvider>().chackContinue[__],
+                          value: context
+                              .watch<CheckBoxProvider>()
+                              .chackContinue[__],
                           onChanged: (v) {
                             context
                                 .read<CheckBoxProvider>()

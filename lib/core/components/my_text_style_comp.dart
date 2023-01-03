@@ -67,4 +67,10 @@ class MyTextStyleComp {
       fontWeight: FontWeight.bold
     );
   }
+
+  static TextStyle get profilePageListTile => TextStyle(
+        color: ColorConst.kPrimaryBlack,
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+      );
 }

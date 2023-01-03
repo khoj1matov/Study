@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:study/screens/home/home_page.dart';
 import 'package:study/screens/pages/continue_page.dart';
 import 'package:study/screens/pages/onboarding_pages/details_page.dart';
+import 'package:study/screens/pages/profile2_page.dart';
+import 'package:study/screens/pages/profile_page.dart';
 import 'package:study/screens/pages/sign_in_page.dart';
 import 'package:study/screens/pages/sign_up_page.dart';
 import 'package:study/screens/pages/onboarding_pages/start_page.dart';
@@ -24,6 +26,10 @@ class MyRouter {
         return MaterialPageRoute(builder: (_) => ContinuePage());
       case '/tab':
         return MaterialPageRoute(builder: (_) => TabBarsPages());
+      case '/profile':
+        return MaterialPageRoute(builder: (_) => const ProfilePage());
+      case '/profile2':
+        return MaterialPageRoute(builder: (_) => const Profile2Page());
     }
   }
 }

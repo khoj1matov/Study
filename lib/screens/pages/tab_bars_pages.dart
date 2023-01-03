@@ -11,7 +11,7 @@ import 'package:study/screens/pages/profile_page.dart';
 class TabBarsPages extends StatelessWidget {
   TabBarsPages({Key? key}) : super(key: key);
 
-  List<Widget> _pages = [
+  final List<Widget> _pages = [
     HomePage(),
     CalendarPage(),
     CommentPage(),
